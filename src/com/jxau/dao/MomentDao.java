@@ -21,7 +21,7 @@ import com.jxau.utils.DBCPUtils;
  */
 public class MomentDao extends BaseDao {
 
-	// 根据用户名找到他的朋友圈列表信息(mood)
+	//根据用户名找到他的朋友圈列表信息(mood)
 	public String find(String username) {
 		Connection conn = null;
 		Statement stmt = null;
@@ -44,14 +44,12 @@ public class MomentDao extends BaseDao {
 	}
 
 	// 根据传来的用户名在数据库新增一行
-	// 传进来一个user，里面有属性name，pwd
 	public boolean insertIntoMoment(User user) {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
 			// 这里怎么样可以根据用户名插入一个默认的mood,这样刚注册的用户登录进去动态才不会显示为空
-			// "{"headImg":"img/head2.png","uname":"ls","mood":"我是老王!嘿嘿嘿"}"
 			conn = JDBCUtils.getConnection();
 			stmt = conn.createStatement();
 			String sql = "INSERT INTO moments(username,mood)" + "  VALUES('" + user.getUsername() + "','" + "')";
@@ -68,18 +66,12 @@ public class MomentDao extends BaseDao {
 		return false;
 	}
 
-	/*
-	 * public UserMoment findByUsername(String username) throws SQLException {
-	 * QueryRunner queryRunner = new QueryRunner(DBCPUtils.getDataSource()); String
-	 * sql = "select * from moments where username=?"; UserMoment userMoment =
-	 * (UserMoment) queryRunner.query(sql, new BeanHandler(UserMoment.class), new
-	 * Object[] {username}); return userMoment; }
-	 */
-	/*
-	 * public static void main(String[] args) throws SQLException { MomentDao
-	 * momentDao = new MomentDao(); String userMoment = momentDao.find("xxc");
-	 * System.out.println(userMoment);
-	 * 
-	 * }
-	 */
+	
+	 /*public static void main(String[] args) throws SQLException { MomentDao
+	 momentDao = new MomentDao(); 
+	 String userMoment = momentDao.find("ylg");
+	  System.out.println(userMoment);
+	  
+	  }*/
+	 
 }

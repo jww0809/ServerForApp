@@ -29,10 +29,10 @@ public class UserServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		System.out.println("从安卓传过来的username的值"+username);
 		MomentDao momentDao = new MomentDao();
+		System.out.println(momentDao.find(username));
 		response.getWriter().write(momentDao.find(username));
-	
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

@@ -21,19 +21,21 @@ public class RegServlet extends HttpServlet {
         super();
     }
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		User user = new User();
+		//这里可以新增一个设置头像的功能;
 		user.setUsername(request.getParameter("name"));
 		user.setPassword(request.getParameter("password"));
 		user.setPhone(request.getParameter("phone"));
 		user.setEmail(request.getParameter("email"));
+		user.setImage("img/head.jpg");
 		
 		UserDao userDao = new UserDao();
 		//为空就开始注册,不然提示"已存在"

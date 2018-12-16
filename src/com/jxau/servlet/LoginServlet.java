@@ -13,65 +13,38 @@ import com.jxau.dao.UserDao;
 
 import com.jxau.model.User;
 
-
 /**
  * 接收来自安卓登录的请求，并且通过数据库验证账户准确性
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public LoginServlet() {
-        super();
-    }
 
+	public LoginServlet() {
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.getWriter().write("GET方法");
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		boolean flag=false;
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		boolean flag = false;
 		String username = request.getParameter("name");
 		String password = request.getParameter("password");
-		System.out.println("name:"+username+"&&"+"password:"+password);
-		
+		System.out.println("name:" + username + "&&" + "password:" + password);
+
 		UserDao userDao = new UserDao();
 		User user = userDao.find(username);
-		if(user!=null&&user.getPassword().equals(password)) {
+		if (user != null && user.getPassword().equals(password)) {
 			System.out.println("登录验证通过");
 			flag = true;
 			response.getWriter().write(String.valueOf(flag));
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*System.out.println(list.size());
-		//遍历list从数据库取值与请求的数据进行对比
-		for(int i=0;i<list.size();i++) {
-			User user = list.get(i);
-			if(name.equals(user.getUsername())&&password.equals(user.getPassword())) {
-				System.out.println("比对成功");
-				flag = true;
-				response.getWriter().write(String.valueOf(flag));
-				break;
-			}
-		}
-	*/
+
 	}
 
 }
